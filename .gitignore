@@ -1,5 +1,5 @@
 # bundle ディレクトリ以下のファイルを無視
-vimfiles/bundle/
+# vimfiles/bundle/
 
 # バックアップ、スワップファイルを無視
 .*~
