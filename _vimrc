@@ -1,4 +1,10 @@
-" set encoding=utf-8
+scriptencoding utf-8
+" å†…éƒ¨ã®è§£é‡ˆã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã€€è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚‚
+set encoding=utf-8
+" æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•è§£é‡ˆã®å„ªå…ˆé †ä½
+set fileencodings=utf-8,cp932,euc-jp
+
+
 
 set nocompatible               " be iMproved
 filetype off
@@ -29,7 +35,7 @@ syntax on
 
 
 
-" 2013-07-03 14:30 ‘‚«•û‚ğv‚¢‚Á‚«‚èŠÔˆá‚¦‚Ä‚¢‚½‚Ì‚ÅC³
+" 2013-07-03 14:30 æ›¸ãæ–¹ã‚’æ€ã„ã£ãã‚Šé–“é•ãˆã¦ã„ãŸã®ã§ä¿®æ­£
 "NeoBundleLazy "davidhalter/jedi-vim", {
 "      \ "autoload": {
 "      \   "filetypes": ["python", "python3", "djangohtml"],
@@ -48,14 +54,14 @@ NeoBundleLazy "davidhalter/jedi-vim", {
       \ }}
 "let s:hooks = neobundle#get_hooks("jedi-vim")
 "function! s:hooks.on_source(bundle)
-"  " jedi‚Évim‚Ìİ’è‚ğ”C‚¹‚é‚Æ'completeopt+=preview'‚·‚é‚Ì‚Å
-"  " ©“®İ’è‹@”\‚ğOFF‚É‚µè“®‚Åİ’è‚ğs‚¤
+"  " jediã«vimã®è¨­å®šã‚’ä»»ã›ã‚‹ã¨'completeopt+=preview'ã™ã‚‹ã®ã§
+"  " è‡ªå‹•è¨­å®šæ©Ÿèƒ½ã‚’OFFã«ã—æ‰‹å‹•ã§è¨­å®šã‚’è¡Œã†
 "   let g:jedi#auto_vim_configuration = 1
-"  " •âŠ®‚ÌÅ‰‚Ì€–Ú‚ª‘I‘ğ‚³‚ê‚½ó‘Ô‚¾‚Æg‚¢‚É‚­‚¢‚½‚ßƒIƒt‚É‚·‚é
+"  " è£œå®Œã®æœ€åˆã®é …ç›®ãŒé¸æŠã•ã‚ŒãŸçŠ¶æ…‹ã ã¨ä½¿ã„ã«ãã„ãŸã‚ã‚ªãƒ•ã«ã™ã‚‹
 "  let g:jedi#popup_select_first = 0
-"  " quickrun‚Æ”í‚é‚½‚ß‘å•¶š‚É•ÏX
+"  " quickrunã¨è¢«ã‚‹ãŸã‚å¤§æ–‡å­—ã«å¤‰æ›´
 "  let g:jedi#rename_command = '<Leader>R'
-"  " gundo‚Æ”í‚é‚½‚ß‘å•¶š‚É•ÏX (2013-06-24 10:00 ’Ç‹Lj
+"  " gundoã¨è¢«ã‚‹ãŸã‚å¤§æ–‡å­—ã«å¤‰æ›´ (2013-06-24 10:00 è¿½è¨˜ï¼‰
 "  let g:jedi#goto_command = '<Leader>G'
 "endfunction
 
@@ -64,16 +70,16 @@ NeoBundleLazy "davidhalter/jedi-vim", {
 
 NeoBundle 'andviro/flake8-vim'
 
-"•Û‘¶‚É©“®‚Åƒ`ƒFƒbƒN
+"ä¿å­˜æ™‚ã«è‡ªå‹•ã§ãƒã‚§ãƒƒã‚¯
 let g:PyFlakeOnWrite = 1
 
-"‰ğÍí•Ê‚ğİ’è
+"è§£æç¨®åˆ¥ã‚’è¨­å®š
 let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
 
-"McCabe•¡G“x‚ÌÅ‘å’l
+"McCabeè¤‡é›‘åº¦ã®æœ€å¤§å€¤
 let g:PyFlakeDefaultComplexity=10
 
-"visualƒ‚[ƒh‚ÅQ‚ğ‰Ÿ‚·‚Æ©“®‚ÅC³
+"visualãƒ¢ãƒ¼ãƒ‰ã§Qã‚’æŠ¼ã™ã¨è‡ªå‹•ã§ä¿®æ­£
 let g:PyFlakeRangeCommand = 'Q'
 
 
@@ -84,26 +90,26 @@ NeoBundle 'hynek/vim-python-pep8-indent'
 
 
 NeoBundle "nathanaelkane/vim-indent-guides"
-" let g:indent_guides_enable_on_vim_startup = 1 2013-06-24 10:00 íœ
+" let g:indent_guides_enable_on_vim_startup = 1 2013-06-24 10:00 å‰Šé™¤
 let s:hooks = neobundle#get_hooks("vim-indent-guides")
 function! s:hooks.on_source(bundle)
   let g:indent_guides_guide_size = 1
-  IndentGuidesEnable " 2013-06-24 10:00 ’Ç‹L
+  IndentGuidesEnable " 2013-06-24 10:00 è¿½è¨˜
 endfunction
 
 
 
-set list                " •s‰Â‹•¶š‚Ì‰Â‹‰»
-set number              " s”Ô†‚Ì•\¦
-set wrap                " ’·‚¢ƒeƒLƒXƒg‚ÌÜ‚è•Ô‚µ
-set textwidth=0         " ©“®“I‚É‰üs‚ª“ü‚é‚Ì‚ğ–³Œø‰»
-set colorcolumn=80      " ‚»‚Ì‘ã‚í‚è80•¶š–Ú‚Éƒ‰ƒCƒ“‚ğ“ü‚ê‚é
+set list                " ä¸å¯è¦–æ–‡å­—ã®å¯è¦–åŒ–
+set number              " è¡Œç•ªå·ã®è¡¨ç¤º
+set wrap                " é•·ã„ãƒ†ã‚­ã‚¹ãƒˆã®æŠ˜ã‚Šè¿”ã—
+set textwidth=0         " è‡ªå‹•çš„ã«æ”¹è¡ŒãŒå…¥ã‚‹ã®ã‚’ç„¡åŠ¹åŒ–
+set colorcolumn=80      " ãã®ä»£ã‚ã‚Š80æ–‡å­—ç›®ã«ãƒ©ã‚¤ãƒ³ã‚’å…¥ã‚Œã‚‹
 
-" ‘O‘ã“IƒXƒNƒŠ[ƒ“ƒxƒ‹‚ğ–³Œø‰»
+" å‰æ™‚ä»£çš„ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ãƒ™ãƒ«ã‚’ç„¡åŠ¹åŒ–
 set t_vb=
 set novisualbell
 
-" ƒfƒtƒHƒ‹ƒg•s‰Â‹•¶š‚Í”ü‚µ‚­‚È‚¢‚Ì‚ÅUnicode‚ÅãY—í‚É
+" ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¸å¯è¦–æ–‡å­—ã¯ç¾ã—ããªã„ã®ã§Unicodeã§ç¶ºéº—ã«
 " set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<,eol:<
 
 
