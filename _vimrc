@@ -1,10 +1,4 @@
-scriptencoding utf-8
-" 内部の解釈の文字コード　設定ファイルも
-set encoding=utf-8
-" 文字コードの自動解釈の優先順位
-set fileencodings=utf-8,cp932,euc-jp
-
-
+" set encoding=utf-8
 
 set nocompatible               " be iMproved
 filetype off
@@ -52,18 +46,18 @@ NeoBundleLazy "davidhalter/jedi-vim", {
       \   "mac": "pip install jedi",
       \   "unix": "pip install jedi",
       \ }}
-"let s:hooks = neobundle#get_hooks("jedi-vim")
-"function! s:hooks.on_source(bundle)
-"  " jediにvimの設定を任せると'completeopt+=preview'するので
-"  " 自動設定機能をOFFにし手動で設定を行う
-"   let g:jedi#auto_vim_configuration = 1
-"  " 補完の最初の項目が選択された状態だと使いにくいためオフにする
-"  let g:jedi#popup_select_first = 0
+let s:hooks = neobundle#get_hooks("jedi-vim")
+function! s:hooks.on_source(bundle)
+  " jediにvimの設定を任せると'completeopt+=preview'するので
+  " 自動設定機能をOFFにし手動で設定を行う
+   let g:jedi#auto_vim_configuration = 1
+  " 補完の最初の項目が選択された状態だと使いにくいためオフにする
+  let g:jedi#popup_select_first = 0
 "  " quickrunと被るため大文字に変更
 "  let g:jedi#rename_command = '<Leader>R'
 "  " gundoと被るため大文字に変更 (2013-06-24 10:00 追記）
 "  let g:jedi#goto_command = '<Leader>G'
-"endfunction
+endfunction
 
 
 
@@ -104,14 +98,35 @@ set number              " 行番号の表示
 set wrap                " 長いテキストの折り返し
 set textwidth=0         " 自動的に改行が入るのを無効化
 set colorcolumn=80      " その代わり80文字目にラインを入れる
+set cursorline          " 表示行のラインを強調表示
+
+
+" python用にタブを空白で処理する
+set tabstop=4
+set autoindent
+set expandtab
+set shiftwidth=4
+
+
+
 
 " 前時代的スクリーンベルを無効化
 set t_vb=
 set novisualbell
 
-" デフォルト不可視文字は美しくないのでUnicodeで綺麗に
-" set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<,eol:<
+" 挿入モードのリマップ
+inoremap <C-space> <C-x><C-o>   " for code complete
+inoremap <C-j> <DOWN>
+inoremap <C-k> <UP>
+
+" コマンドモードのリマップ
+cnoremap <C-j> <DOWN>
+cnoremap <C-k> <UP>
+
+" 表示行移動
+noremap k gk
+noremap j gj
 
 
-inoremap <C-space> <C-x><C-o>
-
+noremap ,ev :tabnew ~/_vimrc
+noremap ,rv :source ~/_vimrc

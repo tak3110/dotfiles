@@ -1,5 +1,10 @@
+
+
+"----------------------------------------
+" Font
+"----------------------------------------
 " フォントをRictyに指定 Windows式
-set guifont=Ricty:h14:cSHIFTJIS
+"set guifont=Ricty:h14:cSHIFTJIS
 " フォントをRictyに指定 Unix
 " set guifont=Ricty\ 12
 " Mac式
@@ -7,7 +12,7 @@ set guifont=Ricty:h14:cSHIFTJIS
  
 "色系の指定=======================================
 "とりあえずscheme指定でザックリ指定
-colorscheme evening
+"colorscheme evening
  
 " マルチバイト文字系のlistcharsで表示される設定はgvimrcに書かないと反映されない
 set listchars=precedes:«,extends:»,eol:↲,tab:▸\
@@ -17,9 +22,6 @@ hi NonText guifg=#444444
 hi SpecialKey guifg=#444444
  
 " 開いたら全画面 windows版のみ
-autocmd GUIEnter * simalt ~x
+"autocmd GUIEnter * simalt ~x
  
-" 開いたら全画面 それっぽくMac版
-" au GUIEnter * winpos 0 0
-" set lines=160 columns=180
-
+set lines=160 columns=180
