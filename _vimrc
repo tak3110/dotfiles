@@ -29,15 +29,6 @@ syntax on
 
 
 
-" 2013-07-03 14:30 書き方を思いっきり間違えていたので修正
-"NeoBundleLazy "davidhalter/jedi-vim", {
-"      \ "autoload": {
-"      \   "filetypes": ["python", "python3", "djangohtml"],
-"      \   "build": {
-"      \     "mac": "pip install jedi",
-"      \     "unix": "pip install jedi",
-"      \   }
-"      \ }}
 NeoBundleLazy "davidhalter/jedi-vim", {
       \ "autoload": {
       \   "filetypes": ["python", "python3", "djangohtml"],
@@ -84,7 +75,6 @@ NeoBundle 'hynek/vim-python-pep8-indent'
 
 
 NeoBundle "nathanaelkane/vim-indent-guides"
-" let g:indent_guides_enable_on_vim_startup = 1 2013-06-24 10:00 削除
 let s:hooks = neobundle#get_hooks("vim-indent-guides")
 function! s:hooks.on_source(bundle)
   let g:indent_guides_guide_size = 1
@@ -118,15 +108,25 @@ set novisualbell
 inoremap <C-space> <C-x><C-o>   " for code complete
 inoremap <C-j> <DOWN>
 inoremap <C-k> <UP>
+inoremap <C-l> <RIGHT>
+inoremap <C-m> <CR>
+inoremap <silent> jj <ESC>
+inoremap <silent> kk <ESC>
+inoremap { {}<Left>       " 引用符, 括弧入力時にペアで対を入力してしまう
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap < <><Left>
 
 " コマンドモードのリマップ
+cnoremap <C-h> <DEL>
 cnoremap <C-j> <DOWN>
 cnoremap <C-k> <UP>
+cnoremap <C-l> <TAB>
+cnoremap <C-m> <CR>
 
-" 表示行移動
-noremap k gk
-noremap j gj
-
-
-noremap ,ev :tabnew ~/_vimrc
-noremap ,rv :source ~/_vimrc
+" ノーマルモードのリマップ
+noremap ; :
+noremap ,ev :tabnew ~/_vimrc    " 設定ファイルの読み込み
+noremap ,rv :source ~/_vimrc    " 設定ファイルの書き込み
