@@ -1,6 +1,7 @@
 set CWD=%~dp0
-echo %CWD%
 
-mklink %HOMEPATH%\_vimrc %CWD%\_vimrc
-mklink %HOMEPATH%\_gvimrc %CWD%\_gvimrc
-mklink /D %HOMEAPTH%\vimfiles %CWD%\vimfiles
+mklink %USERPROFILE%\_vimrc %CWD%\_vimrc
+mklink %USERPROFILE%\_gvimrc %CWD%\_gvimrc
+mklink /D %USERPROFILE%\vimfiles %CWD%\vimfiles
+
+pause
