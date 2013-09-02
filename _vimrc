@@ -2,6 +2,11 @@ set nocompatible               " be iMproved
 filetype off
 
 
+
+execute 'let $PATH="' . escape($PATH, '\\') . ';' . escape($HOME, '\\' ) .'\\vimfiles\\bin\\win\\ag4mingw"'
+
+
+
 if has('vim_starting')
   set runtimepath+=~/vimfiles/bundle/neobundle.vim
   call neobundle#rc(expand('~/vimfiles/bundle/'))
@@ -19,6 +24,8 @@ NeoBundle 'Shougo/neobundle.vim'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
 ""NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle 'rking/ag.vim'
 
 filetype plugin indent on     " required!
 filetype indent on
