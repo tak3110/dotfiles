@@ -110,6 +110,7 @@ set novisualbell
 "------------------------------------
 " 挿入モードのリマップ
 inoremap <C-space> <C-x><C-o>
+inoremap <C-h> <DEL>
 inoremap <C-j> <DOWN>
 inoremap <C-k> <UP>
 inoremap <C-l> <RIGHT>
