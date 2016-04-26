@@ -1,16 +1,14 @@
-set nocompatible               " be iMproved
+" set nocompatible               " be iMproved
 filetype off
-
-
 
 execute 'let $PATH="' . escape($PATH, '\\') . ';' . escape($HOME, '\\' ) .'\\vimfiles\\bin\\win\\ag4mingw"'
 
-
-
 if has('vim_starting')
   set runtimepath+=~/vimfiles/bundle/neobundle.vim
-  call neobundle#rc(expand('~/vimfiles/bundle/'))
 endif
+
+
+call neobundle#begin(expand('~/vimfiles/bundle/'))
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
 " NeoBundle 'Shougo/vimproc'
@@ -22,70 +20,75 @@ NeoBundle 'Shougo/neobundle.vim'
 " NeoBundle 'jpalardy/vim-slime'
 " NeoBundle 'scrooloose/syntastic'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-
 ""NeoBundle 'scrooloose/nerdtree'
+""NeoBundle 'rking/ag.vim'
+call neobundle#end()
 
-NeoBundle 'rking/ag.vim'
 
 filetype plugin indent on     " required!
 filetype indent on
-syntax on
+" syntax on
 
 
 
+if (has('python'))
 
-NeoBundleLazy "davidhalter/jedi-vim", {
-      \ "autoload": {
-      \   "filetypes": ["python", "python3", "djangohtml"],
-      \ },
-      \ "build": {
-      \   "mac": "pip install jedi",
-      \   "unix": "pip install jedi",
-      \ }}
-let s:hooks = neobundle#get_hooks("jedi-vim")
-function! s:hooks.on_source(bundle)
-    " jediにvimの設定を任せると'completeopt+=preview'するので
-    " 自動設定機能をOFFにし手動で設定を行う
-    let g:jedi#auto_vim_configuration = 1
-    " 補完の最初の項目が選択された状態だと使いにくいためオフにする
-    let g:jedi#popup_select_first = 0
-"    " quickrunと被るため大文字に変更
-"    let g:jedi#rename_command = '<Leader>R'
-"    " gundoと被るため大文字に変更 (2013-06-24 10:00 追記）
-"    let g:jedi#goto_command = '<Leader>G'
-endfunction
+	call neobundle#begin(expand('~/vimfiles/bundle/'))
+	NeoBundleLazy "davidhalter/jedi-vim", {
+	      \ "autoload": {
+	      \   "filetypes": ["python", "python3", "djangohtml"],
+	      \ },
+	      \ "build": {
+	      \   "mac": "pip install jedi",
+	      \   "unix": "pip install jedi",
+	      \ }}
+	call neobundle#end()
+
+	let s:hooks = neobundle#get_hooks("jedi-vim")
+	function! s:hooks.on_source(bundle)
+	    " jediにvimの設定を任せると'completeopt+=preview'するので
+	    " 自動設定機能をOFFにし手動で設定を行う
+	    let g:jedi#auto_vim_configuration = 1
+	    " 補完の最初の項目が選択された状態だと使いにくいためオフにする
+	    let g:jedi#popup_select_first = 0
+"	    " quickrunと被るため大文字に変更
+"	    let g:jedi#rename_command = '<Leader>R'
+"	    " gundoと被るため大文字に変更 (2013-06-24 10:00 追記）
+"	    let g:jedi#goto_command = '<Leader>G'
+	endfunction
+
+	call neobundle#begin(expand('~/vimfiles/bundle/'))
+"	 NeoBundle 'andviro/flake8-vim'
+	call neobundle#end()
+
+	" 保存時に自動でチェック
+	let g:PyFlakeOnWrite = 1
+
+	" 解析種別を設定
+	let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
+
+	" McCabe複雑度の最大値
+	let g:PyFlakeDefaultComplexity=10
+
+	" visualモードでQを押すと自動で修正
+	let g:PyFlakeRangeCommand = 'Q'
+
+	call neobundle#begin(expand('~/vimfiles/bundle/'))
+	" NeoBundle 'hynek/vim-python-pep8-indent'
+	call neobundle#end()
+
+	call neobundle#begin(expand('~/vimfiles/bundle/'))
+	NeoBundle "nathanaelkane/vim-indent-guides"
+	call neobundle#end()
+
+	let s:hooks = neobundle#get_hooks("vim-indent-guides")
+	function! s:hooks.on_source(bundle)
+	  let g:indent_guides_guide_size = 1
+	  IndentGuidesEnable " 2013-06-24 10:00 追記
+	endfunction
 
 
-
-
-NeoBundle 'andviro/flake8-vim'
-
-"保存時に自動でチェック
-let g:PyFlakeOnWrite = 1
-
-"解析種別を設定
-let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
-
-"McCabe複雑度の最大値
-let g:PyFlakeDefaultComplexity=10
-
-"visualモードでQを押すと自動で修正
-let g:PyFlakeRangeCommand = 'Q'
-
-
-
-NeoBundle 'hynek/vim-python-pep8-indent'
-
-
-
-
-NeoBundle "nathanaelkane/vim-indent-guides"
-let s:hooks = neobundle#get_hooks("vim-indent-guides")
-function! s:hooks.on_source(bundle)
-  let g:indent_guides_guide_size = 1
-  IndentGuidesEnable " 2013-06-24 10:00 追記
-endfunction
-
+endif
 
 
 " 不可視文字の可視化
